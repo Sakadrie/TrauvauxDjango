@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Cheatsheet · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cheatsheet/">
+
+ </head>
+  <body>
+        <h1>listes des Categories</h1>
+        <div>
+        <div class="bd-example">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Gifs</th>
+            </tr>
+            </thead>
+            <tbody>
+             <tr>
+                 {% for xx in category  %}
+                <th scope="row"></th>
+                <td>{{xx.nom}}</td>
+                <td>{{xx.gifs}}</td>
+                 <td><a href="Categori.html">view</a></td>
+                 {% endfor %}
+             </tr>
+
+             </tbody>
+        </table>
+        </div>
+        </div>
+  </body>
