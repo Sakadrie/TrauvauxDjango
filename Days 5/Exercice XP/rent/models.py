@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Customer(models.Model):
     nom = models.CharField(max_length=200, null=True)
     prenom = models.CharField(max_length=200, null=True)
-    sms_electro = models.TextField()
+    email = models.EmailField()
     phonenumber = PhoneNumberField(blank=True)
     adresse = models.CharField(max_length=200, null=True)
     ville = models.CharField(max_length=200, null=True)

@@ -1,21 +1,22 @@
-from django import  forms
+from django import forms
+from django.forms import ModelForm
 from .models import Customer
 from .models import Location
 from .models import Vehicule
-class CustomerForm(forms.Form):
+class CustomerForm(ModelForm):
     class Meta:
         model = Customer
         fields = '__all__'
 
 
 
-class LocationForm(forms.Form):
+class LocationForm(ModelForm):
     class Meta:
-        modele = Location
+        model = Location
         fields = '__all__'
 
 
-class VehiculeForm(forms.Form):
+class VehiculeForm(ModelForm):
     class Meta:
-        modele = Vehicule
+        model = Vehicule
         fields = '__all__'

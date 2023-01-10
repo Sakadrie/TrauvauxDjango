@@ -7,6 +7,8 @@ from .models import Tarif_location
 from .models import Customer
 from .forms import CustomerForm
 from .forms import VehiculeForm
+from .forms import LocationForm
+from faker import Faker
 # Create your views here.
 
 def index(request):
@@ -21,11 +23,23 @@ def rental(request):
 
 
 def rentals(request, id):
-    pass
+    rentals= Location.objects.get(id=id)
+    return render(request, "rent/rental.html",  {"rentals": rentals})
 
 
 def rental_add(request):
-    pass
+    if request.method == 'POST':
+        # On initialise le formulaire avec les données contenues
+        form = LocationForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
+            return redirect("rental")
+    else:
+        # si non on initialise un formualire vide
+        form = LocationForm()
+    return render(request, 'rent/addlocation.html', {"form": form})
 
 
 def customer(request):
@@ -35,6 +49,8 @@ def customer(request):
 
 
 def customers(request, id):
+    customers= Customer.objects.get(id=id)
+    return render(request, 'rent/vehicule.html', {"customers": customers})
     pass
 
 
@@ -76,5 +92,20 @@ def vehicule_add(request):
     else:
         # si non on initialise un formualire vide
         form = VehiculeForm()
-    return render(request, 'rent/addvehicule.html', {"form2": form})
+    return render(request, 'rent/addvehicule.html', {"form": form})
 
+
+def generate_faker(request):
+    fake = Faker()
+    for x in range(30):
+        customer = Customer(
+            nom=fake.first_name(),
+            prenom=fake.last_name(),
+            email=fake.email(),
+            phonenumber=fake.phone_number(),
+            adresse=fake.address(),
+            ville=fake.city(),
+            pays=fake.country()
+        )
+        customer.save()
+        return redirect("customer")

@@ -31,7 +31,7 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">
               <span data-feather="home"></span>
               Dashboard
             </a>
@@ -64,9 +64,9 @@
       <div class="table-responsive">
         <table class="table table-striped table-sm">
         <form action="" method="POST">
-             {% csrf_token %}
              <table>
-                  {{form.as_table}}
+               {% csrf_token %}
+               {{form.as_table}}
              </table>
              <button type="submit">Save</button>
         </form>
