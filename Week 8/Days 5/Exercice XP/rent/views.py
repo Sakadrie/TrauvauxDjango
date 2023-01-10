@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Location
 from .models import Vehicule
@@ -108,3 +109,25 @@ def generate_faker(request):
         )
         customer.save()
         return redirect("customer")
+
+
+
+def delete(request, id):
+    client = Customer.objects.get(id=id)
+    if request.method == 'POST':
+        client.delete()
+        return redirect("customer")
+    return render(request, "rent/delete.html", {"customer": client})
+
+
+def update(request, id):
+    client = Customer.objects.get(id=id)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save(id)
+            messages.success(request, f"successfully {client.nom} was edited !")
+            return redirect('customer')
+        else:
+            form = CustomerForm(instance=client)
+        return render(request, 'rent/update.html', {'form': form})

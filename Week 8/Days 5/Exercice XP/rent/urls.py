@@ -12,5 +12,7 @@ urlpatterns = [
     path('rent/customer/add', views.customer_add, name="customer_add"),
     path('rent/vehicule/', views.vehicule, name="vehicule"),
     path('rent/vehicule/<int:id>', views.vehicules, name="vehicules"),
-    path('rent/vehicule/add', views.vehicule_add, name="vehicule_add")
+    path('rent/vehicule/add', views.vehicule_add, name="vehicule_add"),
+    path('rent/delete/<int:id>', views.delete, name='delete'),
+    path('rent/update/<int:id>', views.update, name='update')
 ]
