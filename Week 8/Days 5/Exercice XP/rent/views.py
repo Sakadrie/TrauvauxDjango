@@ -9,6 +9,9 @@ from .models import Customer
 from .forms import CustomerForm
 from .forms import VehiculeForm
 from .forms import LocationForm
+from .forms import TypeForm
+from .forms import TarifForm
+from .forms import TailleForm
 from faker import Faker
 # Create your views here.
 
@@ -131,3 +134,49 @@ def update(request, id):
         else:
             form = CustomerForm(instance=client)
         return render(request, 'rent/update.html', {'form': form})
+
+
+def type_add(request):
+    if request.method == 'POST':
+        # On initialise le formulaire avec les données contenues
+        form = TypeForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
+        return redirect('index')
+    else:
+        # si non on initialise un formualire vide
+        form = TypeForm()
+    return render(request, 'rent/addtype.html', {"form": form})
+
+
+
+def tarif_add(request):
+    if request.method == 'POST':
+        # On initialise le formulaire avec les données contenues
+        form = TarifForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
+        return redirect('index')
+    else:
+        # si non on initialise un formualire vide
+        form = TarifForm()
+    return render(request, 'rent/addtarif.html', {"form": form})
+
+
+def taille_add(request):
+    if request.method == 'POST':
+        # On initialise le formulaire avec les données contenues
+        form = TailleForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
+        return redirect('index')
+    else:
+        # si non on initialise un formualire vide
+        form = TailleForm()
+    return render(request, 'rent/addtaille.html', {"form": form})

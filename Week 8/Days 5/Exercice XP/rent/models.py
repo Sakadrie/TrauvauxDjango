@@ -39,7 +39,7 @@ class Vehicule(models.Model):
 
 
     def __str__(self):
-        return str(self.prix)
+        return str(self.type_de_vehicule)
 
 class Location(models.Model):
     client = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -49,7 +49,7 @@ class Location(models.Model):
 
 
     def __str__(self):
-        return str(self.date_de_location)
+        return str(self.client)
 
 
 class Tarif_location(models.Model):
@@ -59,5 +59,5 @@ class Tarif_location(models.Model):
 
 
     def __str__(self):
-        return str(self.tarif_journalier)
+        return str(self.type_de_vehicule)
 

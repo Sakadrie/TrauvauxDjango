@@ -31,63 +31,27 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" style="font-size:25px;"  aria-current="page" href="{% url 'index' %}" >
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">
               <span data-feather="home"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;"  href="{% url 'rental' %}" >
+            <a class="nav-link" href="#">
               <span data-feather="file"></span>
               Location
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;"  href="{% url 'vehicule' %}" >
+            <a class="nav-link" href="#">
               <span data-feather="shopping-cart"></span>
               Vehicules
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'customer' %}" >
+            <a class="nav-link" href="#">
               <span data-feather="users"></span>
               Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'customer_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter un Client
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;"  href="{% url 'vehicule_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter un Vehicule
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'rental_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter une Location
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'tarif_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter une Tarif
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'type_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter une typeVehicule
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size:20px;" href="{% url 'taille_add' %}" >
-              <span data-feather="users"></span>
-              Ajouter une TailleVehicule
             </a>
           </li>
         </ul>
@@ -96,9 +60,17 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-      <h2>DASHBOARD</h2>
+      <h2>Ajouter un Taille</h2>
       <div class="table-responsive">
-
+        <table class="table table-striped table-sm">
+        <form action="" method="POST">
+             <table>
+                {% csrf_token %}
+                {{form.as_table}}
+             </table>
+             <button type="submit">Save</button>
+        </form>
+        </table>
       </div>
     </main>
   </div>
