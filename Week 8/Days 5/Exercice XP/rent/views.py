@@ -130,7 +130,7 @@ def update(request, id):
         if form.is_valid():
             form.save(id)
             messages.success(request, f"successfully {client.nom} was edited !")
-            return redirect('customer')
+            return redirect('addclient')
         else:
             form = CustomerForm(instance=client)
         return render(request, 'rent/update.html', {'form': form})
