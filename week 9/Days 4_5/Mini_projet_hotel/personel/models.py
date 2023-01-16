@@ -9,7 +9,7 @@ class Customer(models.Model):
     adresse = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return self.nom
+        return f'{self.nom}__{self.prenom}__{self.phonenumber}__{self.adresse}'
 
 
 class Reservation(models.Model):

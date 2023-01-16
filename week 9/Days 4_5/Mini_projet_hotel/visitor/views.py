@@ -31,13 +31,15 @@ def reservation_add(request):
 
 def add_message(request):
     if request.method == 'POST':
-        nom = request.POST.get('nom')
-        email = request.POST.get('email')
-        phone_number = request.POST.get('phone_number')
-        comment = request.POST.get('comment')
-        Message.objects.create(nom=nom, email=email, phone_number=phone_number, comment=comment)
-        return redirect('success_view')
+        # On initialise le formulaire avec les données contenues
+        form = MessageForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
     else:
-        return render(request, 'visitor/index.html')
+        # si non on initialise un formualire vide
+        form = MessageForm()
+    return render(request, 'visitor/index.html', {"form": form})
 
 
