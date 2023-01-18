@@ -1,32 +1,40 @@
+
 from django.shortcuts import render, redirect
-from .models import Reservation
-from .forms import ReserverForm
-from .models import Message
 from django.contrib import messages
 from .forms import CustomerForm
+from .forms import *
 
 # Create your views here.
 def index(request):
     return render(request, 'personel/dashboard.html')
 
-def add_client(request):
+def home(request):
+    return render(request, 'visitor/index.html')
+
+
+def users(request):
+    client = Customer.objects.all()
+    return render(request, 'personel/customer.html', {'client': client})
+
+def customer_add(request):
     if request.method == 'POST':
-        # On initialise le formulaire avec les données contenues
+        # on initialise le formulaire avec
         form = CustomerForm(request.POST)
         # test si le formulaire est valide
         if form.is_valid():
-            # On enregistre
             form.save()
+            form = CustomerForm()
     else:
-        # si non on initialise un formualire vide
         form = CustomerForm()
     return render(request, 'personel/addclient.html', {"form": form})
+
 
 def reservation(request):
     reservation = Reservation.objects.all()
     return render(request, 'personel/reserver.html', {"reservation": reservation})
 
-def reservation_add(request):
+
+def rental_add(request):
     if request.method == 'POST':
         # On initialise le formulaire avec les données contenues
         form = ReserverForm(request.POST)
@@ -40,37 +48,58 @@ def reservation_add(request):
         form = ReserverForm()
     return render(request, 'personel/addreser.html', {"form": form})
 
-def update_reser(request, id):
-    reservation = Reservation.objects.get(id=id)
+
+
+def chambres(request):
+    chambre = Chambre.objects.all()
+    return render(request, 'personel/chambre.html', {"chambre": chambre})
+
+
+def add_chambre(request):
     if request.method == 'POST':
-        form = ReserverForm(request.POST, instance=reservation)
+        # On initialise le formulaire avec les données contenues
+        form = ChambreForm(request.POST)
+        # test si le formulaire est valide
         if form.is_valid():
-            form.save(id)
-            messages.success(request, f"successfully {reservation.nom} was edited !")
-            return redirect('reservation')
-        else:
-            form = ReserverForm(instance=reservation)
-        return render(request, 'personel/update.html', {'form': form})
+            # On enregistre
+            form.save()
+            return redirect("rental")
+    else:
+        # si non on initialise un formualire vide
+        form = ChambreForm()
+    return render(request, 'personel/addchambre.html', {"form": form})
 
 
+def message(request):
+    mess = Avis.objects.all()
+    return render(request, 'personel/read.html', {'avis':mess})
 
-def delete_reser(request, id):
-    reservat = Reservation.objects.get(id=id)
+def add_message(request):
     if request.method == 'POST':
-        reservat.delete()
+        # On initialise le formulaire avec les données contenues
+        form = ChambreForm(request.POST)
+        # test si le formulaire est valide
+        if form.is_valid():
+            # On enregistre
+            form.save()
+            return redirect("rental")
+    else:
+        # si non on initialise un formualire vide
+        form = ChambreForm()
+    return render(request, 'visitor/index.html', {"form": form})
+
+
+def del_sms(request, id):
+    sms = Avis.objects.get(id=id)
+    if request.method == 'POST':
+        sms.delete()
         return redirect("reservation")
-    return render(request, "personel/delete.html", {"reservat": reservat})
+    return render(request, "rent/delete.html", {"sms": sms})
 
-def read_message(request, id):
-    messe = Message.objects.get(id=id)
-    mes = messe.comment
-    return render(request, "personel/read.html", {"mes": mes})
 
-def delete_comment(request, id):
-    mess_del = Message.objects.get(id=id)
-    mess = mess_del.comment
+def delete(request, id):
+    rental = Reservation.objects.get(id=id)
     if request.method == 'POST':
-        mess_del.delete()
-        return redirect("read")
-    return render(request, "personel/delete.html", {"mess": mess})
-
+        rental.delete()
+        return redirect("reservation")
+    return render(request, "rent/delete.html", {"reservation": rental})
