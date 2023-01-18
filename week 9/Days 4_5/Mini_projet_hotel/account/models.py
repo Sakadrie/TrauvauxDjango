@@ -10,7 +10,6 @@ class User(AbstractUser):
     profile_photo = models.ImageField(upload_to='uploads_images/', verbose_name='Photo de profil', null=True,
                                       blank=True, default='')
     role = models.CharField(max_length=50, choices=ROLE, verbose_name='Rôle', null=True, blank=True)
-    phone_number = PhoneNumberField()
 
 
     def profile_photoURL(self):
