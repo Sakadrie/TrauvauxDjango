@@ -19,7 +19,7 @@ def login_page(request):
                 login(request, user)
                 return redirect('index')
         message = 'Indentification Invalides.'
-    return render(request, 'account/login.html', context={'form': form, 'message': message})
+    return render(request, 'accounts/login.html', context={'form': form, 'message': message})
 
 def logout_user(request):
     logout(request)

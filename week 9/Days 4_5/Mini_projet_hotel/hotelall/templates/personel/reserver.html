@@ -190,14 +190,11 @@ position:absolute;
                     <td>{{items.cout}}</td>
                      <td>{{items.statu}}</td>
                     <td>
-                      <button type="button" class="btn btn-danger"><a href="" title="SupprimerType"> Supprimer</a></button>
+                      <button type="button" class="btn btn-danger"><a href="{% url 'delete' items.id %}" title="SupprimerType"> Supprimer</a></button>
                     </td>
                   </tr>
                 {% endfor %}
                 </tbody>
-                <!-- Table body -->
-              </table>
-              <!-- Table  -->
             </div>
           </div>
       </div>

@@ -93,8 +93,8 @@ def del_sms(request, id):
     sms = Avis.objects.get(id=id)
     if request.method == 'POST':
         sms.delete()
-        return redirect("reservation")
-    return render(request, "rent/delete.html", {"sms": sms})
+        return redirect("message")
+    return render(request, "personel/delete.html", {"sms": sms})
 
 
 def delete(request, id):
@@ -102,4 +102,4 @@ def delete(request, id):
     if request.method == 'POST':
         rental.delete()
         return redirect("reservation")
-    return render(request, "rent/delete.html", {"reservation": rental})
+    return render(request, "personel/delete.html", {"reservation": rental})
