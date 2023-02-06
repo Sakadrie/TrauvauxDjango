@@ -5,6 +5,7 @@
     <orderEntry type="jdk" jdkName="Python 3.11" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="django_projet" />
+    <orderEntry type="module" module-name="TransportMobile" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

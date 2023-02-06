@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../mobile/TransportMobile/.idea/TransportMobile.iml" filepath="$PROJECT_DIR$/../../../mobile/TransportMobile/.idea/TransportMobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/TrauvauxDjango.iml" filepath="$PROJECT_DIR$/.idea/TrauvauxDjango.iml" />
       <module fileurl="file://$USER_HOME$/django_projet/.idea/django_projet.iml" filepath="$USER_HOME$/django_projet/.idea/django_projet.iml" />
     </modules>

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hotelall',
-    'accounts'
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +126,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "ibam/static")
+    os.path.join(BASE_DIR, "/static")
 ]
 
 MEDIA_URL = '/images/'

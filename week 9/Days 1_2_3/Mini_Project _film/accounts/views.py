@@ -1,9 +1,15 @@
 from django.shortcuts import render
 
 # Create your views here.
+
+
+# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+
+
+
 
 def register(request):
     if request.method == 'POST':
@@ -64,3 +70,8 @@ def logout(request):
         return redirect('index')
 
 
+def dashboard(request):
+
+
+
+    return render(request, 'accounts/dashboard.html')
